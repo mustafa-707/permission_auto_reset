@@ -1,6 +1,6 @@
 name: permission_auto_reset
 description: A Flutter plugin to handle Android's auto-reset permission behavior.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/mustafa-707/permission_auto_reset
 repository: https://github.com/mustafa-707/permission_auto_reset
 issue_tracker: https://github.com/mustafa-707/permission_auto_reset/issues
