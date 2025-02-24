@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// Enum representing the possible states of permission auto-reset restrictions
@@ -30,6 +32,8 @@ class PermissionAutoReset {
   /// - unknown: Unexpected status value received
   static Future<RestrictionsStatus> checkRestrictionsStatus() async {
     try {
+      if (kIsWeb) return RestrictionsStatus.enabled;
+      if (!Platform.isAndroid) return RestrictionsStatus.enabled;
       final String status =
           await _channel.invokeMethod('checkRestrictionsStatus');
       switch (status) {
@@ -55,6 +59,8 @@ class PermissionAutoReset {
   /// Returns true if the settings page was successfully opened
   static Future<bool> openRestrictionsSettings() async {
     try {
+      if (kIsWeb) return false;
+      if (!Platform.isAndroid) return false;
       final bool success =
           await _channel.invokeMethod('openRestrictionsSettings');
       return success;

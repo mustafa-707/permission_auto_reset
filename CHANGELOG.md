@@ -1,5 +1,9 @@
 # CHANGES
 
+## 0.0.3
+
+- Handle iOS.
+
 ## 0.0.2
 
 - Support old android versions.
