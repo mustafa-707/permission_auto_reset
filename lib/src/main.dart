@@ -32,10 +32,9 @@ class PermissionAutoReset {
   /// - unknown: Unexpected status value received
   static Future<RestrictionsStatus> checkRestrictionsStatus() async {
     try {
-      if (kIsWeb) return RestrictionsStatus.enabled;
-      if (!Platform.isAndroid) return RestrictionsStatus.enabled;
-      final String status =
-          await _channel.invokeMethod('checkRestrictionsStatus');
+      if (kIsWeb) return RestrictionsStatus.disabled;
+      if (!Platform.isAndroid) return RestrictionsStatus.disabled;
+      final status = await _channel.invokeMethod('checkRestrictionsStatus');
       switch (status) {
         case 'ERROR':
           return RestrictionsStatus.error;
